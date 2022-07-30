@@ -57,7 +57,7 @@ app.post('/api/create_event', async (req, res) => {
   try {
     conn = await pool.getConnection();
     await conn.query('USE gopherbackend');
-    const result = await conn.query(`INSERT INTO open_activities (activity, additional_info, user_num) VALUES ('${req.body.activity}', '${req.body.info}', ${req.body.user_num})`);
+    const result = await conn.query(`INSERT INTO open_activities (activity, additional_info, user_num, created_at) VALUES ('${req.body.activity}', '${req.body.info}', ${req.body.user_num}, '${new Date().toJSON().slice(0, 10)}')`);
     res.status().send(201);
   }
   catch (err) {
