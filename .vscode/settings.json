@@ -1,0 +1,17 @@
+{
+    "sqltools.connections": [
+        {
+            "mysqlOptions": {
+                "authProtocol": "default"
+            },
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 3306,
+            "driver": "MariaDB",
+            "name": "GopherBackend",
+            "database": "gopherbackend",
+            "username": "matthew.allen",
+            "password": "^8PxdWaf-ky7yP4v"
+        }
+    ]
+}
