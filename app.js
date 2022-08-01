@@ -33,7 +33,7 @@ app.get('/api/pfp', async (req, res) => {
   try {
     conn = await pool.getConnection();
     await conn.query('USE gopherbackend');
-    const imgUrl = await conn.query('SELECT img FROM users WHERE user_num = ?', [Number(req.query.user_num)]);
+    const imgUrl = await conn.query('SELECT img FROM users WHERE username = ?', [req.query.user]);
     res.sendFile(`${path.join(__dirname)}/img/${imgUrl[0].img}`);
   }
   catch (err) {
