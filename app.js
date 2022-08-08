@@ -51,7 +51,7 @@ app.get('/api/open_activities', async (req, res) => {
     try {
       conn = await pool.getConnection();
       await conn.query('USE gopherbackend');
-      const result = await conn.query("select open_activities.*, users.username, users.first_name, users.last_name, users.img from open_activities INNER JOIN users order by open_activities.created_at DESC LIMIT 25");
+      const result = await conn.query("select open_activities.*, users.username, users.first_name, users.last_name, users.img from open_activities LEFT JOIN users on open_activities.user_num = users.user_num order by open_activities.created_at DESC LIMIT 25");
       res.send(result);
     } catch (err) {
       console.log(err);
